@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-app
+  labels:
+    app: chat
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: chat
+  template:
+    metadata:
+      labels:
+        app: chat
+    spec:
+      containers:
+        - name: chat-app
+          image: tonyashvanian/k8s-tonythedeveloperchat
+
+          ports:
+            - containerPort: 3000
+              name: chat
+              protocol: TCP
